@@ -38,3 +38,7 @@ static void ShowAds()
 ## Скриншот работы программы
 
 ![Скриншот](https://github.com/skripkalisa/SF_CSharp_Part2/blob/Mod12/Mod12/Mod12.png)
+
+## Алгоритм
+
+![Алгоритм](https://github.com/skripkalisa/SF_CSharp_Part2/blob/Mod12/Mod12/Algorithm.png)
