@@ -6,7 +6,7 @@
 
 ## Содержание
 
-- [Модуль 12. Понятие алгоритма. Основные характеристики. Оценка сложности алгоритма](https://github.com/skripkalisa/SF_CSharp_Part2/tree/Mod12)
+- [Модуль 12. Понятие алгоритма. Основные характеристики. Оценка сложности алгоритма](https://github.com/skripkalisa/SF_CSharp_Part2/tree/Mod12/Mod12)
 
 - [Модуль 13. Основные коллекции С# ](https://github.com/skripkalisa/SF_CSharp_Part2/tree/main/Mod13)
 
