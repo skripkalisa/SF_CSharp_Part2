@@ -11,9 +11,9 @@ namespace SocialNetwork.BLL.Services
 {
     public class UserService
     {
-        MessageService _messageService;
-        IUserRepository _userRepository;
-        IFriendRepository _friendRepository;
+        readonly MessageService _messageService;
+        readonly IUserRepository _userRepository;
+        readonly IFriendRepository _friendRepository;
 
         public UserService()
         {
@@ -47,10 +47,10 @@ namespace SocialNetwork.BLL.Services
 
             var userEntity = new UserEntity
             {
-                Firstname = userRegistrationData.FirstName,
-                Lastname = userRegistrationData.LastName,
-                Password = userRegistrationData.Password,
-                Email = userRegistrationData.Email
+                firstname = userRegistrationData.FirstName,
+                lastname = userRegistrationData.LastName,
+                password = userRegistrationData.Password,
+                email = userRegistrationData.Email
             };
 
             if (_userRepository.Create(userEntity) == 0)
@@ -63,7 +63,7 @@ namespace SocialNetwork.BLL.Services
             var findUserEntity = _userRepository.FindByEmail(userAuthenticationData.Email);
             if (findUserEntity is null) throw new UserNotFoundException();
 
-            if (findUserEntity.Password != userAuthenticationData.Password)
+            if (findUserEntity.password != userAuthenticationData.Password)
                 throw new WrongPasswordException();
 
             return ConstructUserModel(findUserEntity);
@@ -89,14 +89,14 @@ namespace SocialNetwork.BLL.Services
         {
             var updatableUserEntity = new UserEntity
             {
-                Id = user.Id,
-                Firstname = user.FirstName,
-                Lastname = user.LastName,
-                Password = user.Password,
-                Email = user.Email,
-                Photo = user.Photo,
-                FavoriteMovie = user.FavoriteMovie,
-                FavoriteBook = user.FavoriteBook
+                id = user.Id,
+                firstname = user.FirstName,
+                lastname = user.LastName,
+                password = user.Password,
+                email = user.Email,
+                photo = user.Photo,
+                favorite_movie = user.FavoriteMovie,
+                favorite_book = user.FavoriteBook
             };
 
             if (_userRepository.Update(updatableUserEntity) == 0)
@@ -106,7 +106,7 @@ namespace SocialNetwork.BLL.Services
         private IEnumerable<User> GetFriendsByUserId(int userId)
         {
             return _friendRepository.FindAllByUserId(userId)
-                    .Select(friendsEntity => FindById(friendsEntity.FriendId));
+                    .Select(friendsEntity => FindById(friendsEntity.friend_id));
         }
 
         public void AddFriend(UserAddingFriendData userAddingFriendData)
@@ -116,33 +116,28 @@ namespace SocialNetwork.BLL.Services
 
             var friendEntity = new FriendEntity
             {
-                UserId = userAddingFriendData.UserId,
-                FriendId = findUserEntity.Id
+                user_id = userAddingFriendData.UserId,
+                friend_id = findUserEntity.id
             };
 
-            Console.WriteLine("friendEntity");
-            Console.WriteLine(friendEntity.UserId);
-            Console.WriteLine(friendEntity.FriendId);
-            
-            
             if (_friendRepository.Create(friendEntity) == 0)
                 throw new Exception();
         }
 
         private User ConstructUserModel(UserEntity userEntity)
         {
-            var incomingMessages = _messageService.GetIncomingMessagesByUserId(userEntity.Id);
-            var outgoingMessages = _messageService.GetOutgoingMessagesByUserId(userEntity.Id);
-            var friends = GetFriendsByUserId(userEntity.Id);
+            var incomingMessages = _messageService.GetIncomingMessagesByUserId(userEntity.id);
+            var outgoingMessages = _messageService.GetOutgoingMessagesByUserId(userEntity.id);
+            var friends = GetFriendsByUserId(userEntity.id);
 
-            return new User(userEntity.Id,
-                          userEntity.Firstname,
-                          userEntity.Lastname,
-                          userEntity.Password,
-                          userEntity.Email,
-                          userEntity.Photo,
-                          userEntity.FavoriteMovie,
-                          userEntity.FavoriteBook,
+            return new User(userEntity.id,
+                          userEntity.firstname,
+                          userEntity.lastname,
+                          userEntity.password,
+                          userEntity.email,
+                          userEntity.photo,
+                          userEntity.favorite_movie,
+                          userEntity.favorite_book,
                           incomingMessages,
                           outgoingMessages,
                           friends

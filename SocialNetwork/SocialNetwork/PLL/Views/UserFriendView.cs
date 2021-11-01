@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SocialNetwork.BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using SocialNetwork.BLL.Models;
 
 namespace SocialNetwork.PLL.Views
 {
@@ -12,13 +12,14 @@ namespace SocialNetwork.PLL.Views
             Console.WriteLine("Мои друзья");
 
 
-            if (friends.Count() == 0)
+            var enumerable = friends.ToList();
+            if (!enumerable.Any())
             {
                 Console.WriteLine("У вас нет друзей");
                 return;
             }
 
-            friends.ToList().ForEach(friend =>
+            enumerable.ForEach(friend =>
             {
                 Console.WriteLine("Почтовый адрес друга: {0}. Имя друга: {1}. Фамилия друга: {2}", friend.Email, friend.FirstName, friend.LastName);
             });

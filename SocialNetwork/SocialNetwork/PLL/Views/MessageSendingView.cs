@@ -8,8 +8,8 @@ namespace SocialNetwork.PLL.Views
 {
     public class MessageSendingView
     {
-        UserService _userService;
-        MessageService _messageService;
+        readonly UserService _userService;
+        readonly MessageService _messageService;
         public MessageSendingView(MessageService messageService, UserService userService)
         {
             _messageService = messageService;

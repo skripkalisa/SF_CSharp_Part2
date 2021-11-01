@@ -21,22 +21,7 @@ namespace SocialNetwork.PLL.Views
 
                 Console.WriteLine("Введите почтовый адрес пользователя которого хотите добавить в друзья: ");
 
-                Console.WriteLine("user:");
-                Console.WriteLine(user.FirstName);
-                Console.WriteLine(user.Id);
-                
-                
-                
-                string email = Console.ReadLine();
-                
-                userAddingFriendData.FriendEmail = email;
-                
-                User friend  = _userService.FindByEmail(email);
-
-                Console.WriteLine("friend:");
-                Console.WriteLine(friend.FirstName);
-                Console.WriteLine(friend.Id);
-                
+                userAddingFriendData.FriendEmail = Console.ReadLine();
                 userAddingFriendData.UserId = user.Id;
 
                 _userService.AddFriend(userAddingFriendData);

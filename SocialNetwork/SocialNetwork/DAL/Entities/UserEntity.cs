@@ -1,14 +1,14 @@
-namespace SocialNetwork.DAL.Entities
+﻿namespace SocialNetwork.DAL.Entities
 {
     public class UserEntity
     {
-        public int Id { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string Photo { get; set; }
-        public string FavoriteMovie { get; set; }
-        public string FavoriteBook { get; set; }
+        public int id { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+        public string photo { get; set; }
+        public string favorite_movie { get; set; }
+        public string favorite_book { get; set; }
     }
 }

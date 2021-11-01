@@ -2,7 +2,7 @@
 {
     public class Message
     {
-        public int Id { get; }
+        private int Id { get; }
         public string Content { get; }
         public string SenderEmail { get; }
         public string RecipientEmail { get; }

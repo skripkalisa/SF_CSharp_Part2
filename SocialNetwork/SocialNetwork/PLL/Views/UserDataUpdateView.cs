@@ -1,7 +1,7 @@
-﻿using System;
-using SocialNetwork.BLL.Models;
+﻿using SocialNetwork.BLL.Models;
 using SocialNetwork.BLL.Services;
 using SocialNetwork.PLL.Helpers;
+using System;
 
 namespace SocialNetwork.PLL.Views
 {

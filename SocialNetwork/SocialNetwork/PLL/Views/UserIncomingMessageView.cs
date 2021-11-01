@@ -1,7 +1,7 @@
-﻿using System;
+﻿using SocialNetwork.BLL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using SocialNetwork.BLL.Models;
 
 namespace SocialNetwork.PLL.Views
 {
@@ -12,13 +12,14 @@ namespace SocialNetwork.PLL.Views
             Console.WriteLine("Входящие сообщения");
 
 
-            if (incomingMessages.Count() == 0)
+            var enumerable = incomingMessages.ToList();
+            if (!enumerable.Any())
             {
                 Console.WriteLine("Входящих сообщения нет");
                 return;
             }
 
-            incomingMessages.ToList().ForEach(message =>
+            enumerable.ForEach(message =>
             {
                 Console.WriteLine("От кого: {0}. Текст сообщения: {1}", message.SenderEmail, message.Content);
             });

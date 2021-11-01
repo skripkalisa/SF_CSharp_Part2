@@ -24,6 +24,8 @@ namespace SocialNetwork
             _userService = new UserService();
             _messageService = new MessageService();
 
+            
+
             _mainView = new MainView();
             RegistrationView = new RegistrationView(_userService);
             AuthenticationView = new AuthenticationView(_userService);
