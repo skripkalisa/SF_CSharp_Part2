@@ -35,3 +35,4 @@ _В нашем проекте на уровне `DAL` (`Data Access Layer`) уж
 ![Screenshot](sn_2.png)
 ![Screenshot](sn_3.png)
 ![Screenshot](sn_4.png)
+![Screenshot](sn_5.png)
